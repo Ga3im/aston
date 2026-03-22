@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Header.module.css";
-import { fetchPosts } from "../../entities/post/api/getPosts";
+import { ThemeSwitcher } from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
 
-export const LayoutHeader: React.FC = () => {
-  fetchPosts();
+export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <a href="/" className={styles.logo}>
         🚀 Posts
       </a>
+      <ThemeSwitcher />
     </header>
   );
 };

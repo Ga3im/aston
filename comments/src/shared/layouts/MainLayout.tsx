@@ -1,33 +1,17 @@
-import { useEffect, useState } from "react";
-import { fetchPosts } from "../../entities/post/api/getPosts";
-import type { Post } from "../../entities/post/model/types";
-import { LayoutHeader } from "../../widgets/LayoutHeader/Header";
-import { PostList } from "../../widgets/PostList/PostList ";
+import { Header } from "../../widgets/LayoutHeader/Header";
+import { Footer } from "../../widgets/LayoutFooter/Footer";
+import type { ReactNode } from "react";
 
-export const MainLayout = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+type MainLayoutType = {
+  children: ReactNode;
+};
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    const loadData = async () => {
-      try {
-        const data = await fetchPosts();
-        setIsLoading(false);
-        setPosts(data);
-      } catch (error) {
-        console.error("Ошибка:", error);
-        setIsLoading(false);
-      }
-    };
-    loadData();
-  }, []);
-
+export const MainLayout = ({ children }: MainLayoutType) => {
   return (
     <>
-      <LayoutHeader />
-      <PostList posts={posts} isLoading={isLoading} />
+      <Header />
+      {children}
+      <Footer />
     </>
   );
 };

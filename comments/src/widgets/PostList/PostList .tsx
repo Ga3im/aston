@@ -1,13 +1,12 @@
 import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
-import type { Post } from "../../entities/post/model/types";
+import { usePosts } from "../../entities/post/api/usePosts";
 
-type PostListProps = {
-  posts: Post[];
-  isLoading: boolean;
-};
+export const PostList = () => {
+  const { posts, isLoading, error } = usePosts();
 
-export const PostList: React.FC<PostListProps> = ({ posts, isLoading }) => {
+  console.log(error);
+
   return (
     <section className={styles.list}>
       {isLoading

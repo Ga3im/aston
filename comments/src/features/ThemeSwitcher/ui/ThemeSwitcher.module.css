@@ -1,0 +1,15 @@
+.darkThemeBtn::before {
+  content: "🌙 Тёмная тема";
+}
+.lightThemeBtn::before {
+  content: "☀️ Светлая тема";
+}
+
+@media (max-width: 480px) {
+  .darkThemeBtn::before {
+    content: "🌙";
+  }
+  .lightThemeBtn::before {
+    content: "☀️";
+  }
+}
