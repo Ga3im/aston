@@ -1,37 +1,44 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useState, type ReactNode } from "react";
 
 type ThemeType = {
   theme: "light" | "dark";
   handleTheme: () => void;
+  isAboutOpen: boolean;
+  openAbout: () => void;
+  closeAbout: () => void;
 };
 
 type ThemeProviderType = {
   children: ReactNode;
 };
 
-const ThemeContext = createContext<ThemeType | null>(null);
+export const AppContext = createContext<ThemeType | null>(null);
 
 export const ThemeProvider = ({ children }: ThemeProviderType) => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") {
+      return saved;
+    }
+    return "dark";
+  });
+  const [isAboutOpen, setIsAboutOpen] = useState<boolean>(false);
 
   const handleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
+  const openAbout = () => setIsAboutOpen(true);
+  const closeAbout = () => setIsAboutOpen(false);
 
   const value: ThemeType = {
     theme,
     handleTheme,
+    isAboutOpen,
+    openAbout,
+    closeAbout,
   };
 
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-  );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("Context равен null");
-  }
-  return context;
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

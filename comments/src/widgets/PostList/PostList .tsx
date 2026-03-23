@@ -13,14 +13,18 @@ export const PostList = () => {
         ? Array(10)
             .fill(0)
             .map((_, i) => (
-              <PostCard
-                key={i}
-                data={{ userId: 1, id: 1, title: "", completed: false }}
-                isLoading={isLoading}
-              />
+              <>
+                <PostCard
+                  key={i}
+                  data={{ userId: 1, id: 1, title: "", completed: false }}
+                  isLoading={isLoading}
+                />
+              </>
             ))
         : posts.map((post) => (
-            <PostCard key={post.id} data={post} isLoading={isLoading} />
+            <>
+              <PostCard key={post.id} data={post} isLoading={isLoading} />
+            </>
           ))}
     </section>
   );

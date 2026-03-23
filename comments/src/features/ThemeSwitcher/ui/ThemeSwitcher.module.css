@@ -1,3 +1,9 @@
+.darkThemeBtn,
+.lightThemeBtn {
+  border-radius: 10px;
+}
+
+
 .darkThemeBtn::before {
   content: "🌙 Тёмная тема";
 }

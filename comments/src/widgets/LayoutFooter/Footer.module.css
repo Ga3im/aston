@@ -1,8 +1,14 @@
 .footer {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: #e0e0e0;
+  color: #000000;
+
   padding: 40px 20px;
   font-family: sans-serif;
+}
+
+.footerDark {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
 .container {
@@ -37,13 +43,19 @@
 }
 
 .link {
-  color: #ccc;
+  color: #646464;
   text-decoration: none;
   transition: color 0.2s ease;
+  transition: all 0.3s;
 }
 
 .link:hover {
   color: #fff;
+  transform: scale(1.2);
+}
+
+.linkDark {
+  color: #ccc;
 }
 
 .bottom {

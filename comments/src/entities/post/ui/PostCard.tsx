@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PostCard.module.css";
 import type { Post } from "../model/types";
+import { useApp } from "../../../shared/lib/theme/useApp";
 
 type PostCardProps = {
   data: Post;
@@ -8,21 +9,12 @@ type PostCardProps = {
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ data, isLoading }) => {
-  const { title, completed } = data;
+  const { title } = data;
+  const { theme } = useApp();
+  const cardTheme =
+    theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
   return (
-    <article className={styles.card}>
-      <span
-        className={
-          isLoading
-            ? styles.statusLoading
-            : `${styles.status} ${
-                completed ? styles.completed : styles.pending
-              }`
-        }
-      >
-        {!isLoading && (completed ? "✓ Выполнено" : "○ В процессе")}
-      </span>
-
+    <article className={cardTheme}>
       <h3 className={isLoading ? styles.titleLoading : styles.title}>
         {title}
       </h3>

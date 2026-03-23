@@ -1,8 +1,8 @@
-import { useTheme } from "../../../shared/lib/theme/ThemeProvider";
+import { useApp } from "../../../shared/lib/theme/useApp";
 import styles from "./ThemeSwitcher.module.css";
 
 export const ThemeSwitcher = () => {
-  const { theme, handleTheme } = useTheme();
+  const { theme, handleTheme } = useApp();
   return (
     <button onClick={handleTheme}>
       {theme === "light" ? (
