@@ -25,19 +25,7 @@
   font-size: 1.1rem;
   text-transform: capitalize;
 }
-.titleLoading {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0.05) 75%
-  );
-  background-size: 200% 100%;
-  animation: loading 2s infinite linear;
-  width: 150px;
-  border-radius: 20px;
-  height: 30px;
-}
+
 
 .status {
   font-size: 0.85rem;
@@ -48,35 +36,4 @@
   place-self: end;
 }
 
-.statusLoading {
-  width: 100px;
-  height: 20px;
-  border-radius: 20px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0.05) 75%
-  );
-  background-size: 200% 100%;
-  animation: loading 2s infinite linear;
-}
 
-.completed {
-  background-color: #fff5f514;
-  color: #38a169;
-}
-
-.pending {
-  background-color: #fff5f514;
-  color: #e53e3e;
-}
-
-@keyframes loading {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: 400px 0;
-  }
-}

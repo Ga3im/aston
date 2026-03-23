@@ -1,27 +1,22 @@
-import { Portal } from "../../shared/ui/Modal/Modal";
-import styles from "./AboutModal.module.css";
-
+import { Modal } from "../../shared/ui/Modal/Modal";
 interface AboutModalProps {
   onClose: () => void;
 }
 
 export const AboutModal = ({ onClose }: AboutModalProps) => {
   return (
-    <Portal>
-      <div className={styles.overlay} onClick={onClose}>
-        <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-          <h2 className={styles.title}>О проекте</h2>
-          <div className={styles.text}>
-            <p>Это приложение для обмена постами и комментариями.</p>
-            <p>
-              <strong>Стек:</strong> React, CSS Modules, FSD.
-            </p>
-          </div>
-          <button className={styles.closeBtn} onClick={onClose}>
-            Закрыть
-          </button>
-        </div>
-      </div>
-    </Portal>
+    <Modal onClose={onClose}>
+      <Modal.Header>
+        <h3>О проекте Посты</h3>
+      </Modal.Header>
+
+      <Modal.Body>
+        <p>Здесь можно читать посты и фильтровать их по длине.</p>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <button onClick={onClose}>Закрыть</button>
+      </Modal.Footer>
+    </Modal>
   );
 };

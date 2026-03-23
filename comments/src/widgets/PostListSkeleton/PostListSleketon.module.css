@@ -1,0 +1,89 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #000;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardDark {
+  background: #3b3b3b;
+  color: #fff;
+}
+
+.titleLoading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s infinite linear;
+  width: 150px;
+  border-radius: 20px;
+  height: 30px;
+}
+
+.bodyLoading {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 2s infinite linear;
+  width: 200px;
+  border-radius: 20px;
+  height: 50px;
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: repeat(3, 2fr);
+    padding: 10px;
+    gap: 15px;
+  }
+}
+@media (max-width: 550px) {
+  .list {
+    grid-template-columns: repeat(2, 2fr);
+    padding: 10px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 15px;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
