@@ -1,5 +1,5 @@
 import { Modal } from "../../shared/ui/Modal/Modal";
-interface AboutModalProps {
+type AboutModalProps = {
   onClose: () => void;
 }
 

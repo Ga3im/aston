@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
-import { usePosts } from "../../entities/post/api/usePosts";
-import { PostLengthFilter } from "../../features/ThemeSwitcher/ui/PostLengthFilter/ui/PostLengthFilter";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
+import { PostLengthFilter } from "../../features/PostLengthFilter/ui/PostLengthFilter";
+import { usePosts } from "../../features/PostList/model/hooks/usePosts";
 
 const PostListBase = ({
   sortedPosts,
@@ -21,11 +21,13 @@ const PostListBase = ({
     </section>
   );
 };
-
+type PostListProps = {
+  userId?: string;
+};
 const PostListWithLoading = withLoading(PostListBase, PostListSkeleton);
 
-export const PostList = () => {
-  const { sortedPosts, setSortOrder, isLoading, error } = usePosts();
+export const PostList = ({ userId }: PostListProps) => {
+  const { sortedPosts, setSortOrder, isLoading, error } = usePosts(userId);
 
   const handleSortChange = useCallback(
     (order: any) => {

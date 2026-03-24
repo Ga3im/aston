@@ -1,13 +1,11 @@
-import { MainLayout } from "../shared/layouts/MainLayout";
+import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
-import { PostList } from "../widgets/PostList/PostList ";
+import { router } from "./provider/router/appRouter";
 
 function App() {
   return (
     <ThemeProvider>
-      <MainLayout>
-        <PostList />
-      </MainLayout>
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }

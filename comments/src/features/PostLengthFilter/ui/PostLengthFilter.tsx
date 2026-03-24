@@ -1,7 +1,7 @@
 import type { ChangeEvent } from "react";
-import { useApp } from "../../../../../shared/lib/theme/useApp";
 import styles from "./PostLengthFilter.module.css";
 import type { SortOrder } from "../lib/filterByLength";
+import { useApp } from "../../../shared/lib/theme/useApp";
 
 type PostLengthFilterType = {
   onChange: (value: SortOrder) => void;
