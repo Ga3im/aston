@@ -1,11 +1,13 @@
+import { useApp } from "../../shared/lib/theme/useApp";
 import { Modal } from "../../shared/ui/Modal/Modal";
-type AboutModalProps = {
-  onClose: () => void;
-}
 
-export const AboutModal = ({ onClose }: AboutModalProps) => {
+export const AboutModal = () => {
+  const { isAboutOpen, closeAbout } = useApp();
+
+  if (!isAboutOpen) return null;
+
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={closeAbout}>
       <Modal.Header>
         <h3>О проекте Посты</h3>
       </Modal.Header>
@@ -15,7 +17,7 @@ export const AboutModal = ({ onClose }: AboutModalProps) => {
       </Modal.Body>
 
       <Modal.Footer>
-        <button onClick={onClose}>Закрыть</button>
+        <button onClick={closeAbout}>Закрыть</button>
       </Modal.Footer>
     </Modal>
   );
