@@ -1,11 +1,11 @@
-import { useApp } from "../../shared/lib/theme/useApp";
+import { useTheme } from "../../shared/lib/theme/useTheme";
 import styles from "./PostListSleketon.module.css";
 
 export const PostListSkeleton = ({ length }: { length?: number }) => {
-  const arrLength = length !== undefined ? length : 10;
-  const { theme } = useApp();
+  const { theme } = useTheme();
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
+  const arrLength = length !== undefined ? length : 10;
 
   return (
     <div className={length === 1 ? styles.oneList : styles.list}>

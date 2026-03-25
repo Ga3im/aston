@@ -1,11 +1,11 @@
 import { Header } from "../../widgets/LayoutHeader/Header";
 import { Footer } from "../../widgets/LayoutFooter/Footer";
-import { useApp } from "../lib/theme/useApp";
 import styles from "./MainLayout.module.css";
 import { Outlet } from "react-router-dom";
+import { useTheme } from "../lib/theme/useTheme";
 
 export const MainLayout = () => {
-  const { theme  } = useApp();
+  const { theme  } = useTheme();
   const mainTheme =
     theme === "dark" ? `${styles.main} ${styles.darkMain}` : styles.main;
   return (
@@ -13,7 +13,7 @@ export const MainLayout = () => {
       <Header />
       <Outlet />
       <Footer />
-     
+
     </main>
   );
 };

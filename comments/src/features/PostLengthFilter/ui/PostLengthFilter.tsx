@@ -1,14 +1,14 @@
 import type { ChangeEvent } from "react";
 import styles from "./PostLengthFilter.module.css";
 import type { SortOrder } from "../lib/filterByLength";
-import { useApp } from "../../../shared/lib/theme/useApp";
+import { useTheme } from "../../../shared/lib/theme/useTheme";
 
 type PostLengthFilterType = {
   onChange: (value: SortOrder) => void;
 };
 
 export const PostLengthFilter = ({ onChange }: PostLengthFilterType) => {
-  const { theme } = useApp();
+  const { theme } = useTheme();
 
   const handleSortChange = (
     e: ChangeEvent<HTMLSelectElement, HTMLSelectElement>

@@ -1,11 +1,11 @@
-import { useApp } from "../../shared/lib/theme/useApp";
+import { useAboutModal } from "../../shared/lib/modal/useAboutModal";
 import { Modal } from "../../shared/ui/Modal/Modal";
 
+
 export const AboutModal = () => {
-  const { isAboutOpen, closeAbout } = useApp();
+  const { isAboutOpen, closeAbout } = useAboutModal();
 
   if (!isAboutOpen) return null;
-
   return (
     <Modal onClose={closeAbout}>
       <Modal.Header>
