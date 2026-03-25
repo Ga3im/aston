@@ -1,4 +1,4 @@
-import { useApp } from "../../../shared/lib/theme/useApp";
+import { useTheme } from "../../../shared/lib/theme/useTheme";
 import styles from "./TodoCard.module.css";
 
 type TodoCardProps = {
@@ -7,10 +7,10 @@ type TodoCardProps = {
     title: string;
     completed: boolean;
   };
-}
+};
 
 export const TodoCard = ({ data }: TodoCardProps) => {
-  const { theme } = useApp();
+  const { theme } = useTheme();
 
   const isDark = theme === "dark";
   const cardTheme = isDark ? `${styles.card} ${styles.cardDark}` : styles.card;

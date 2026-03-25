@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./AlbumCard.module.css";
-import { useApp } from "../../../shared/lib/theme/useApp";
+import { useTheme } from "../../../shared/lib/theme/useTheme";
 
 export const AlbumCard = ({ data }: { data: any }) => {
-  const { theme } = useApp();
+  const { theme } = useTheme();
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
   return (

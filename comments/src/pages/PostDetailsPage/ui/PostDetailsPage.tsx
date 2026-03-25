@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { usePostById } from "../../../entities/post/api/usePostById";
 import styles from "./PostDetailPage.module.css";
-import { useApp } from "../../../shared/lib/theme/useApp";
+import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
 
 export const PostDetailsPage = () => {
@@ -9,7 +9,7 @@ export const PostDetailsPage = () => {
   const navigate = useNavigate();
 
   const { post, isLoading, error } = usePostById(id);
-  const { theme } = useApp();
+  const { theme } = useTheme();
 
   if (isLoading) return <PostListSkeleton length={1} />;
   if (error) return <div className={styles.container}>{error}</div>;
