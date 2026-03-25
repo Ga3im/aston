@@ -1,14 +1,15 @@
+import { useAboutModal } from "../../shared/lib/modal/useAboutModal";
 import { Portal } from "../../shared/ui/Modal/Modal";
 import styles from "./AboutModal.module.css";
 
-interface AboutModalProps {
-  onClose: () => void;
-}
+export const AboutModal = () => {
+  const { isAboutOpen, closeAbout } = useAboutModal();
 
-export const AboutModal = ({ onClose }: AboutModalProps) => {
+  if (!isAboutOpen) return null;
+
   return (
     <Portal>
-      <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.overlay} onClick={closeAbout}>
         <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
           <h2 className={styles.title}>О проекте</h2>
           <div className={styles.text}>
@@ -17,7 +18,7 @@ export const AboutModal = ({ onClose }: AboutModalProps) => {
               <strong>Стек:</strong> React, CSS Modules, FSD.
             </p>
           </div>
-          <button className={styles.closeBtn} onClick={onClose}>
+          <button className={styles.closeBtn} onClick={closeAbout}>
             Закрыть
           </button>
         </div>

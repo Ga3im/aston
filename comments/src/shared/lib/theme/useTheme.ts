@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { AppContext } from "./ThemeProvider";
+import { ThemeContext } from "./ThemeProvider";
 
-export const useApp = () => {
-  const context = useContext(AppContext);
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
   if (!context) {
     throw new Error("Context равен null");
   }
