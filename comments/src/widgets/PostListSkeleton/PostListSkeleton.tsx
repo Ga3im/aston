@@ -1,8 +1,8 @@
-import { useApp } from "../../shared/lib/theme/useApp";
+import { useTheme } from "../../shared/lib/theme/useTheme";
 import styles from "./PostListSleketon.module.css";
 
 export const PostListSkeleton = () => {
-  const { theme } = useApp();
+  const { theme } = useTheme();
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
 

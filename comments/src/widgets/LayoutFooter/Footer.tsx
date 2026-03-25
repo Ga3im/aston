@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { useApp } from "../../shared/lib/theme/useApp";
+import { useTheme } from "../../shared/lib/theme/useTheme";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const { theme } = useApp();
+  const { theme } = useTheme();
 
   const footerTheme =
     theme === "dark" ? `${styles.footer} ${styles.footerDark}` : styles.footer;
