@@ -8,7 +8,6 @@ export const usePostById = (id: string | undefined) => {
 
   useEffect(() => {
     if (!id) return;
-
     const loadPost = async () => {
       setIsLoading(true);
       try {
@@ -24,7 +23,6 @@ export const usePostById = (id: string | undefined) => {
         setIsLoading(false);
       }
     };
-
     loadPost();
   }, [id]);
 

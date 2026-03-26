@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { usePostById } from "../../../entities/post/api/usePostById";
+import { usePostById } from "../../../entities/post/api/postApiById";
 import styles from "./PostDetailPage.module.css";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";

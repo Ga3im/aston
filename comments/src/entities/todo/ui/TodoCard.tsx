@@ -22,7 +22,7 @@ export const TodoCard = ({ data }: TodoCardProps) => {
         <input
           type="checkbox"
           checked={data.completed}
-          readOnly // Пока просто отображаем
+          readOnly 
           className={styles.checkbox}
         />
       </div>

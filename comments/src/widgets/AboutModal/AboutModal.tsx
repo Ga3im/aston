@@ -6,6 +6,7 @@ export const AboutModal = () => {
   const { isAboutOpen, closeAbout } = useAboutModal();
 
   if (!isAboutOpen) return null;
+  
   return (
     <Modal onClose={closeAbout}>
       <Modal.Header>
