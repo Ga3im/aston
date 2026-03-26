@@ -8,7 +8,6 @@ import { usePosts } from "../../features/PostList/model/hooks/usePosts";
 
 const PostListBase = ({
   sortedPosts,
-  isLoading,
 }: {
   sortedPosts: any[];
   isLoading: boolean;
@@ -16,7 +15,7 @@ const PostListBase = ({
   return (
     <section className={styles.list}>
       {sortedPosts.map((post) => (
-        <PostCard key={post.id} data={post} isLoading={isLoading} />
+        <PostCard key={post.id} data={post} />
       ))}
     </section>
   );
