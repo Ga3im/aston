@@ -8,6 +8,7 @@ type PostListProps = {
 };
 
 export const PostList: React.FC<PostListProps> = ({ posts, isLoading }) => {
+
   return (
     <section className={styles.list}>
       {isLoading
