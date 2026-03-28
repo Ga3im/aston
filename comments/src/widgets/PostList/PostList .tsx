@@ -7,6 +7,8 @@ export const PostList = () => {
 
   console.log(error);
 
+export const PostList: React.FC<PostListProps> = ({ posts, isLoading }) => {
+
   return (
     <section className={styles.list}>
       {isLoading
