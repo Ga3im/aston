@@ -1,3 +1,16 @@
+.button {
+  background-color: #565eef;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: opacity 0.2s ease;
+}
+.button:hover {
+  opacity: 0.8;
+}
+
 .btnBlock {
   display: flex;
   align-items: center;

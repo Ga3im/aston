@@ -5,6 +5,13 @@ import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
 import { PostLengthFilter } from "../../features/PostLengthFilter/ui/PostLengthFilter";
 import { usePosts } from "../../features/PostList/model/hooks/usePosts";
+import type { Post } from "../../entities/post/model/types";
+
+type PostListProp = {
+  posts?: Post[];
+  isLoading: boolean;
+  error: any;
+};
 
 const PostListBase = ({
   sortedPosts,
@@ -20,13 +27,11 @@ const PostListBase = ({
     </section>
   );
 };
-type PostListProps = {
-  userId?: string;
-};
+
 const PostListWithLoading = withLoading(PostListBase, PostListSkeleton);
 
-export const PostList = ({ userId }: PostListProps) => {
-  const { sortedPosts, setSortOrder, isLoading, error } = usePosts(userId);
+export const PostList = ({ posts = [], isLoading, error }: PostListProp) => {
+  const { sortedPosts, setSortOrder } = usePosts(posts);
 
   const handleSortChange = useCallback(
     (order: any) => {
@@ -35,12 +40,15 @@ export const PostList = ({ userId }: PostListProps) => {
     [setSortOrder]
   );
 
-  if (error) return <div>Ошибка: {error}</div>;
+  if (error) {
+    const errorMessage =
+      "status" in error ? JSON.stringify(error.data) : "Ошибка";
+    return <div>Ошибка: {errorMessage}</div>;
+  }
 
   return (
     <>
       <PostLengthFilter onChange={handleSortChange} />
-
       <PostListWithLoading isLoading={isLoading} sortedPosts={sortedPosts} />
     </>
   );

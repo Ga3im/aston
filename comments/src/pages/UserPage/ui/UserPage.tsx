@@ -1,5 +1,5 @@
 import { Outlet, useParams } from "react-router-dom";
-import { UserTabs } from "../../../widgets/UserTabs/UserTabs"; // Проверь путь до виджета
+import { UserTabs } from "../../../widgets/UserTabs/UserTabs"; 
 
 export const UserLayout = () => {
   const { id } = useParams();

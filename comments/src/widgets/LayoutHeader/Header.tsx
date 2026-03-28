@@ -7,7 +7,7 @@ import { useAboutModal } from "../../shared/lib/modal/useAboutModal";
 
 export const Header: React.FC = () => {
   const { theme } = useTheme();
-  const{openAbout } = useAboutModal()
+  const { openAbout } = useAboutModal();
 
   const hedaerTheme =
     theme === "dark" ? `${styles.header} ${styles.darkHeader}` : styles.header;

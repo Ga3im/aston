@@ -1,0 +1,42 @@
+.comment {
+  padding: 12px;
+  border-left: 4px solid #2196f3;
+  background: #f9f9f9;
+  margin-bottom: 12px;
+  border-radius: 0 8px 8px 0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.comment:hover {
+  transform: scale(1.05);
+}
+
+.dark {
+  background: #2d2d2d;
+  color: #eee;
+  border-left-color: #1976d2;
+}
+
+.author {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #666;
+  margin: 0 0 4px 0;
+}
+
+.dark .author {
+  color: #aaa;
+}
+
+.name {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  text-transform: capitalize;
+}
+
+.body {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}

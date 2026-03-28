@@ -1,18 +1,23 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { usePostById } from "../../../entities/post/api/postApiById";
 import styles from "./PostDetailPage.module.css";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Button } from "../../../shared/ui/Button/Button";
+import { useGetPostByIdQuery } from "../../../entities/post/api/postApi";
 
 export const PostDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const { post, isLoading, error } = usePostById(id);
+  const { data: post, isLoading, error } = useGetPostByIdQuery(id ?? "");
   const { theme } = useTheme();
 
   if (isLoading) return <PostListSkeleton length={1} />;
-  if (error) return <div className={styles.container}>{error}</div>;
+  if (error) {
+    const errorMessage =
+      "status" in error ? JSON.stringify(error.data) : "Ошибка";
+    return <div className={styles.container}>Ошибка: {errorMessage}</div>;
+  }
 
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
@@ -23,9 +28,7 @@ export const PostDetailsPage = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.backBtn} onClick={() => navigate(-1)}>
-        ← Назад
-      </button>
+      <Button onClick={() => navigate(-1)}>← Назад</Button>
 
       <article className={cardTheme}>
         <h1 className={titleTheme}>{post?.title}</h1>

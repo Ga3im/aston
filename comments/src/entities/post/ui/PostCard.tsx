@@ -10,21 +10,21 @@ type PostCardProps = {
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ data }) => {
-  const { title, body, id } = data;
+  const { title, body, id, userId } = data;
   const { theme } = useTheme();
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
+
   return (
     <article onClick={() => navigate(`/posts/${id}`)} className={cardTheme}>
-      <h3 className={styles.title}>
-        {title}
-      </h3>
+      <h3 className={styles.title}>{title}</h3>
       <CommentList>{body}</CommentList>
       <div onClick={(e) => e.stopPropagation()} className={styles.authorInfo}>
         <span>Автор: </span>
-        <Link to={`/users/${data.userId}/posts`} className={styles.authorLink}>
-          Пользователь {data.userId}
+        <Link to={`/users/${userId}`} className={styles.authorLink}>
+          Пользователь {userId}
         </Link>
       </div>
     </article>

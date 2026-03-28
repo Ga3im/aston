@@ -1,10 +1,12 @@
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
 import styles from "./UserAlbumsPage.module.css";
-import { AlbumCard } from "../../../entities/album/ui/AlbumCard";
-import { useUserAlbums } from "../../../features/UserAlbums/model/hooks/useUserAlbums";
+import { useGetUserAlbumsQuery } from "../../../entities/album/api/albumApi";
+import { AlbumList } from "../../../widgets/AlbumList/AlbumList";
+import { useParams } from "react-router-dom";
 
 export const UserAlbumsPage = () => {
-  const { albums, isLoading } = useUserAlbums();
+  const { id } = useParams();
+  const { data: albums = [], isLoading } = useGetUserAlbumsQuery(id ?? "");
 
   if (isLoading)
     return (
@@ -14,13 +16,9 @@ export const UserAlbumsPage = () => {
     );
 
   return (
-    <div className={styles.container}>
+    <>
       <h2 className={styles.title}>Альбомы пользователя</h2>
-      <div className={styles.grid}>
-        {albums.map((album) => (
-          <AlbumCard key={album.id} data={album} />
-        ))}
-      </div>
-    </div>
+      <AlbumList albums={albums} isLoading={isLoading} />
+    </>
   );
 };

@@ -1,0 +1,35 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+.cardDark { background: #2d2d2d; border-color: #444; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.statusDone { color: #4caf50; font-weight: bold; padding: 4px 12px; background: #e8f5e9; border-radius: 20px; }
+.statusPending { color: #ffa000; font-weight: bold; padding: 4px 12px; background: #fff8e1; border-radius: 20px; }
+
+.id { color: #888; font-size: 0.9rem; }
+
+.name { margin: 0 0 16px 0; font-size: 1.8rem; line-height: 1.2; }
+.titleDark { color: #f0f0f0; }
+
+.info { font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 16px; }

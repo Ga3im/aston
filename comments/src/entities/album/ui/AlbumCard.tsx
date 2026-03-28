@@ -7,7 +7,7 @@ export const AlbumCard = ({ data }: { data: any }) => {
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
   return (
-    <Link to={`/albums/${data.id}/photos`} className={cardTheme}>
+    <Link to={`/albums/${data.id}`} className={cardTheme}>
       <div className={styles.icon}>📁</div>
       <div className={styles.info}>
         <h3 className={styles.albumTitle}>{data.title}</h3>
