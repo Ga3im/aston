@@ -1,0 +1,18 @@
+.btnBlock {
+  display: flex;
+  align-items: center;
+}
+
+.darkThemeBtn,
+.lightThemeBtn {
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .darkThemeBtn {
+    display: none;
+  }
+  .lightThemeBtn {
+    display: none;
+  }
+}
