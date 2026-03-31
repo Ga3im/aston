@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import { usePosts } from "../../entities/post/api/usePosts";
 import styles from "./PostList.module.css";
