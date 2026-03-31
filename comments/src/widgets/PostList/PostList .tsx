@@ -1,10 +1,14 @@
-import { useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import { usePosts } from "../../entities/post/api/usePosts";
-import { PostLengthFilter } from "../../features/ThemeSwitcher/ui/PostLengthFilter/ui/PostLengthFilter";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
+import {
+  sortByLength,
+  type SortOrder,
+} from "../../shared/lib/sort/sortByLenght";
+import { FilterByLength } from "../../features/FilterByLength/ui/FilterByLength";
 
 const PostListBase = ({
   sortedPosts,
@@ -25,21 +29,22 @@ const PostListBase = ({
 const PostListWithLoading = withLoading(PostListBase, PostListSkeleton);
 
 export const PostList = () => {
-  const { sortedPosts, setSortOrder, isLoading, error } = usePosts();
+  const { posts, isLoading, error } = usePosts();
+  const [sortOrder, setSortOrder] = useState<SortOrder>("none");
 
-  const handleSortChange = useCallback(
-    (order: any) => {
-      setSortOrder(order);
-    },
-    [setSortOrder]
-  );
+  const sortedPosts = useMemo(() => {
+    return sortByLength(posts, sortOrder, "title");
+  }, [posts, sortOrder]);
+
+  const handleSortChange = (order: SortOrder) => {
+    setSortOrder(order);
+  };
 
   if (error) return <div>Ошибка: {error}</div>;
 
   return (
     <>
-      <PostLengthFilter onChange={handleSortChange} />
-
+      <FilterByLength onChange={handleSortChange} />
       <PostListWithLoading isLoading={isLoading} sortedPosts={sortedPosts} />
     </>
   );

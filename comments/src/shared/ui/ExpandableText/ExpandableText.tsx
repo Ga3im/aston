@@ -1,11 +1,11 @@
 import { useState, type ReactNode } from "react";
-import styles from "./CommentList.module.css";
+import styles from "./ExpandableText.module.css";
 
 type CommentListType = {
   children: ReactNode;
 };
 
-export const CommentList = ({ children }: CommentListType) => {
+export const ExpandableText = ({ children }: CommentListType) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenCommetBody = () => {

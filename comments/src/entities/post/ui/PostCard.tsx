@@ -2,10 +2,11 @@ import React from "react";
 import styles from "./PostCard.module.css";
 import type { Post } from "../model/types";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
-import { CommentList } from "../../../widgets/CommentList/ui/CommentList";
+import { ExpandableText } from "../../../shared/ui/ExpandableText/ExpandableText";
 
 type PostCardProps = {
   data: Post;
+  isLoading?: boolean;
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ data }) => {
@@ -16,7 +17,7 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
   return (
     <article className={cardTheme}>
       <h3 className={styles.title}>{title}</h3>
-      <CommentList>{body}</CommentList>
+      <ExpandableText>{body}</ExpandableText>
     </article>
   );
 };

@@ -1,4 +1,4 @@
-import { useAboutModal } from "../../shared/lib/modal/useAboutModal";
+import { useAboutModal } from "../../entities/about/model/useAboutModal";
 import { Portal } from "../../shared/ui/Modal/Portal";
 import styles from "./AboutModal.module.css";
 
