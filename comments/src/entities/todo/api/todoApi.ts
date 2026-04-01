@@ -13,10 +13,18 @@ export const todoApi = createApi({
       providesTags: ["Todo"],
     }),
     getTodoById: builder.query<Todo, number | string>({
-      query: (id) => `/todos/${id}`,
-      providesTags: (_result, _error, id) => [{ type: "Todo", id }],
+      query: (todoId) => `/todos/${todoId}`,
+      providesTags: (_result, _error, todoId) => [{ type: "Todo", todoId }],
+    }),
+    getUserTodos: builder.query<Todo[], number | string>({
+      query: (userId) => `/users/${userId}/todos`,
+      providesTags: (result) =>
+        result
+          ? [...result.map(({ id }) => ({ type: "Todo" as const, id })), "Todo"]
+          : ["Todo"],
     }),
   }),
 });
 
-export const { useGetTodoQuery, useGetTodoByIdQuery } = todoApi;
+export const { useGetTodoQuery, useGetTodoByIdQuery, useGetUserTodosQuery } =
+  todoApi;

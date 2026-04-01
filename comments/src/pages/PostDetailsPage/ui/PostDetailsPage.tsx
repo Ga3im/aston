@@ -6,10 +6,10 @@ import { Button } from "../../../shared/ui/Button/Button";
 import { useGetPostByIdQuery } from "../../../entities/post/api/postApi";
 
 export const PostDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { postId } = useParams<{ postId: string }>();
   const navigate = useNavigate();
 
-  const { data: post, isLoading, error } = useGetPostByIdQuery(id ?? "");
+  const { data: post, isLoading, error } = useGetPostByIdQuery(postId ?? "");
   const { theme } = useTheme();
 
   if (isLoading) return <PostListSkeleton length={1} />;
@@ -29,7 +29,6 @@ export const PostDetailsPage = () => {
   return (
     <div className={styles.container}>
       <Button onClick={() => navigate(-1)}>← Назад</Button>
-
       <article className={cardTheme}>
         <h1 className={titleTheme}>{post?.title}</h1>
         <p className={bodyTheme}>{post?.body}</p>

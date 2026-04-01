@@ -13,18 +13,18 @@ export const photoApi = createApi({
       providesTags: ["Photo"],
     }),
     getPhotoById: builder.query<Photo, number | string>({
-      query: (id) => `/photos/${id}`,
-      providesTags: (_result, _error, id) => [{ type: "Photo", id }],
+      query: (photoId) => `/photos/${photoId}`,
+      providesTags: (_result, _error, photoId) => [{ type: "Photo", photoId }],
     }),
     getAlbumPhotos: builder.query<Photo[], number | string>({
-      query: (id) => `/albums/${id}/photos`,
-      providesTags: (result, _error, id) =>
+      query: (photoId) => `/albums/${photoId}/photos`,
+      providesTags: (result, _error, photoId) =>
         result
           ? [
               ...result.map(({ id }) => ({ type: "Photo" as const, id })),
-              { type: "Photo", id },
+              { type: "Photo", photoId },
             ]
-          : [{ type: "Photo", id }],
+          : [{ type: "Photo", photoId }],
     }),
   }),
 });

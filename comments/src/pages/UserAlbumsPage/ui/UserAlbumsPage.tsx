@@ -5,8 +5,8 @@ import { AlbumList } from "../../../widgets/AlbumList/AlbumList";
 import { useParams } from "react-router-dom";
 
 export const UserAlbumsPage = () => {
-  const { id } = useParams();
-  const { data: albums = [], isLoading } = useGetUserAlbumsQuery(id ?? "");
+  const { userId } = useParams();
+  const { data: albums = [], isLoading } = useGetUserAlbumsQuery(userId ?? "");
 
   if (isLoading)
     return (

@@ -13,11 +13,11 @@ export const postsApi = createApi({
       providesTags: ["Post"],
     }),
     getPostById: builder.query<Post[], number | string>({
-      query: (id) => `/posts/${id}`,
-      providesTags: (_result, _error, id) => [{ type: "Post", id }],
+      query: (postId) => `/posts/${postId}`,
+      providesTags: (_result, _error, postId) => [{ type: "Post", postId }],
     }),
     getUserPosts: builder.query<Post[], number | string>({
-      query: (id) => `/users/${id}/posts`,
+      query: (userId) => `/users/${userId}/posts`,
       providesTags: (result) =>
         result
           ? [...result.map(({ id }) => ({ type: "Post" as const, id })), "Post"]

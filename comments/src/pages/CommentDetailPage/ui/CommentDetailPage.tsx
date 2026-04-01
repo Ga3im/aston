@@ -7,11 +7,11 @@ import { Button } from "../../../shared/ui/Button/Button";
 import { useGetCommentByIdQuery } from "../../../entities/comment/api/commentApi";
 
 export const CommentDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { commentId } = useParams<{ commentId: string }>();
   const navigate = useNavigate();
   const { theme } = useTheme();
 
-  const { data: comment, isLoading, error } = useGetCommentByIdQuery(id ?? "");
+  const { data: comment, isLoading, error } = useGetCommentByIdQuery(commentId ?? "");
 
   if (isLoading) return <PostListSkeleton length={1} />;
 

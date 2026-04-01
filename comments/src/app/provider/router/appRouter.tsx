@@ -24,19 +24,19 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/posts" replace /> },
       { path: "posts", element: <PostListPage /> },
-      { path: "posts/:id", element: <PostDetailsPage /> },
+      { path: "posts/:postId", element: <PostDetailsPage /> },
       { path: "comments", element: <CommentListPage /> },
-      { path: "comments/:id", element: <CommentDetailsPage /> },
+      { path: "comments/:commentId", element: <CommentDetailsPage /> },
       { path: "albums", element: <AlbumListPage /> },
-      { path: "albums/:id", element: <AlbumDetailsPage /> },
+      { path: "albums/:albumId", element: <AlbumDetailsPage /> },
       { path: "photos", element: <PhotoListPage /> },
-      { path: "photos/:id", element: <PhotoDetailPage /> },
+      { path: "photos/:photoId", element: <PhotoDetailPage /> },
       { path: "todos", element: <TodoListPage /> },
-      { path: "todos/:id", element: <TodoDetailPage /> },
+      { path: "todos/:todoId", element: <TodoDetailPage /> },
       { path: "users", element: <UserListPage /> },
 
       {
-        path: "users/:id",
+        path: "users/:userId",
         element: <UserLayout />,
         children: [
           { path: "posts", element: <UserPostsPage /> },
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
           { path: "todos", element: <UserTodosPage /> },
         ],
       },
-      { path: "albums/:id/photos", element: <AlbumPhotosPage /> },
+      { path: "albums/:userId/photos", element: <AlbumPhotosPage /> },
     ],
   },
 ]);

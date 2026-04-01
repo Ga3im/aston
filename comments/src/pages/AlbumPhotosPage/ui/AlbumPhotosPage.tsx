@@ -6,9 +6,9 @@ import styles from "./AlbumPhotosPage.module.css";
 
 export const AlbumPhotosPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
+  const { albumPhotoId } = useParams<{ albumPhotoId: string }>();
 
-  const { data: photos, isLoading, error } = useGetAlbumPhotosQuery(id ?? "");
+  const { data: photos, isLoading, error } = useGetAlbumPhotosQuery(albumPhotoId ?? "");
 
   return (
     <div className={styles.container}>

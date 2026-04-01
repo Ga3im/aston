@@ -1,9 +1,12 @@
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
 import { TodoCard } from "../../../entities/todo/ui/TodoCard";
-import { useUserTodos } from "../../../features/UserTodos/model/hooks/useUserTodos";
+import { useGetUserTodosQuery } from "../../../entities/todo/api/todoApi";
+import { useParams } from "react-router-dom";
 
 export const UserTodosPage = () => {
-  const { todos, isLoading } = useUserTodos();
+  const { userId } = useParams();
+  const { data: todos = [], isLoading } = useGetUserTodosQuery(userId ?? "");
+
   if (isLoading)
     return (
       <div>

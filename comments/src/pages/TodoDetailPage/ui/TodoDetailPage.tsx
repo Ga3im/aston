@@ -6,11 +6,11 @@ import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkel
 import styles from "./TodoDetailPage.module.css";
 
 export const TodoDetailPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { todoId } = useParams<{ todoId: string }>();
   const navigate = useNavigate();
   const { theme } = useTheme();
 
-  const { data: todo, isLoading, error } = useGetTodoByIdQuery(id ?? "");
+  const { data: todo, isLoading, error } = useGetTodoByIdQuery(todoId ?? "");
 
   if (isLoading) return <div className={styles.container}><PostListSkeleton length={1} /></div>;
   if (error) return <div className={styles.container}>Ошибка: {JSON.stringify(error)}</div>;
@@ -28,14 +28,14 @@ export const TodoDetailPage = () => {
           <span className={statusTheme}>
             {todo?.completed ? "Выполнено" : "В работе"}
           </span>
-          <span className={styles.id}>Задача №{todo?.id}</span>
+          <span className={styles.todoId}>Задача №{todo?.id}</span>
         </div>
         
         <h1 className={`${styles.name} ${isDark ? styles.titleDark : ""}`}>
           {todo?.title}
         </h1>
         
-        <p className={styles.info}>ID пользователя: {todo?.userId}</p>
+        <p className={styles.info}>todoId пользователя: {todo?.userId}</p>
       </article>
     </div>
   );

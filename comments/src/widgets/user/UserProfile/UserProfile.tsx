@@ -1,11 +1,11 @@
 import { Outlet, useParams } from "react-router-dom";
-import { UserTabs } from "../../../widgets/UserTabs/UserTabs"; 
+import { UserTabs } from "../UserTabs/UserTabs"; 
 
 export const UserLayout = () => {
-  const { id } = useParams();
+  const { userId } = useParams();
   return (
     <div>
-      <h2>Профиль пользователя №{id}</h2>
+      <h2>Профиль пользователя №{userId}</h2>
       <UserTabs />
       <hr />
       <Outlet />

@@ -13,12 +13,12 @@ export const albumApi = createApi({
       providesTags: ["Album"],
     }),
     getAlbumById: builder.query<Album, number | string>({
-      query: (id) => `/albums/${id}`,
-      providesTags: (_result, _error, id) => [{ type: "Album", id }],
+      query: (albumId) => `/albums/${albumId}`,
+      providesTags: (_result, _error, albumId) => [{ type: "Album", albumId }],
     }),
     getUserAlbums: builder.query<Album[], number | string>({
-      query: (id) => `/users/${id}/albums`,
-      providesTags: (_result, _error, id) => [{ type: "Album", id }],
+      query: (albumId) => `/users/${albumId}/albums`,
+      providesTags: (_result, _error, albumId) => [{ type: "Album", albumId }],
     }),
   }),
 });

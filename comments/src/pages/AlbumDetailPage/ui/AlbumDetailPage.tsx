@@ -5,10 +5,10 @@ import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkel
 import { Button } from "../../../shared/ui/Button/Button";
 
 export const AlbumDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { albumId } = useParams<{ albumId: string }>();
   const navigate = useNavigate();
 
-  const { data: album, isLoading, error } = useGetAlbumByIdQuery(id ?? "");
+  const { data: album, isLoading, error } = useGetAlbumByIdQuery(albumId ?? "");
 
   if (isLoading) return <PostListSkeleton length={9} />;
   if (error) return <div className={styles.error}>Ошибка загрузки фотографий</div>;
@@ -23,7 +23,7 @@ export const AlbumDetailsPage = () => {
 
       <div className={styles.photoGrid}>
         {/* {photos?.map((photo) => (
-          <div key={photo.id} className={styles.photoCard}>
+          <div key={photo.albumId} className={styles.photoCard}>
             <img 
               src={photo.thumbnailUrl} 
               alt={photo.title} 

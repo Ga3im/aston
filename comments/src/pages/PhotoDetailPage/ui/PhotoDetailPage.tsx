@@ -6,10 +6,10 @@ import { useGetPhotoByIdQuery } from "../../../entities/photos/api/PhotoApi";
 import { PhotoCard } from "../../../entities/photos/ui/PhotoCard";
 
 export const PhotoDetailPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { photoId } = useParams<{ photoId: string }>();
   const navigate = useNavigate();
 
-  const { data: photo, isLoading, error } = useGetPhotoByIdQuery(id ?? "");
+  const { data: photo, isLoading, error } = useGetPhotoByIdQuery(photoId ?? "");
 
   if (isLoading)
     return (

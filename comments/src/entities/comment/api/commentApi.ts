@@ -13,8 +13,8 @@ export const commentsApi = createApi({
       providesTags: ["Comment"],
     }),
     getCommentById: builder.query<Comment, number | string>({
-      query: (id) => `/comments/${id}`,
-      providesTags: (_result, _error, id) => [{ type: "Comment", id }],
+      query: (commentId) => `/comments/${commentId}`,
+      providesTags: (_result, _error, commentId) => [{ type: "Comment", commentId }],
     }),
   }),
 });
