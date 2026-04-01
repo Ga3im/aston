@@ -6,6 +6,7 @@ import { sortByLength } from "../../shared/lib/sort/sortByLenght";
 import { useCallback, useMemo, useState } from "react";
 import type { SortOrder } from "../../features/PostLengthFilter/lib/filterByLength";
 import { usePosts } from "../../features/PostList/model/hooks/usePosts";
+import { FilterByLength } from "../../features/FilterByLength/ui/FilterByLength";
 
 const PostListBase = ({
   sortedPosts,
