@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 type PostCardProps = {
   data: Post;
+  isLoading?: boolean;
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ data }) => {

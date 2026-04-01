@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
@@ -34,7 +33,7 @@ export const PostList = ({ posts = [], isLoading, error }: PostListProp) => {
   const { sortedPosts, setSortOrder } = usePosts(posts);
 
   const handleSortChange = useCallback(
-    (order: any) => {
+    (order: SortOrder) => {
       setSortOrder(order);
     },
     [setSortOrder]
