@@ -42,6 +42,8 @@ export const PostList = () => {
 
   if (error) return <div>Ошибка: {error}</div>;
 
+export const PostList: React.FC<PostListProps> = ({ posts, isLoading }) => {
+
   return (
     <>
       <FilterByLength onChange={handleSortChange} />
