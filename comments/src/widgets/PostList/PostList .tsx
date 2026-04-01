@@ -2,9 +2,11 @@ import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
-import { PostLengthFilter } from "../../features/PostLengthFilter/ui/PostLengthFilter";
 import { usePosts } from "../../features/PostList/model/hooks/usePosts";
 import type { Post } from "../../entities/post/model/types";
+import { useCallback } from "react";
+import type { SortOrder } from "../../shared/lib/sort/sortByLenght";
+import { FilterByLength } from "../../features/FilterByLength/ui/FilterByLength";
 
 type PostListProp = {
   posts?: Post[];
@@ -47,7 +49,7 @@ export const PostList = ({ posts = [], isLoading, error }: PostListProp) => {
 
   return (
     <>
-      <PostLengthFilter onChange={handleSortChange} />
+      <FilterByLength onChange={handleSortChange} />
       <PostListWithLoading isLoading={isLoading} sortedPosts={sortedPosts} />
     </>
   );
