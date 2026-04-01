@@ -1,5 +1,5 @@
 import { MainLayout } from "../shared/layouts/MainLayout";
-import { ModalProvider } from "../shared/lib/modal/ModalContext";
+import { ModalProvider } from "../entities/about/model/ModalContext";
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
 import { AboutModal } from "../widgets/AboutModal/AboutModal";
 import { PostList } from "../widgets/PostList/PostList ";

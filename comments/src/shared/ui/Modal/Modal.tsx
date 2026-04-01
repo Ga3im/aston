@@ -1,14 +1,32 @@
-import { type ReactNode } from "react";
-import { createPortal } from "react-dom";
-import { usePortal } from "../../lib/hooks/usePortal";
+import type { ReactNode } from "react";
+import { Portal } from "./Portal";
+import styles from "./Modal.module.css";
 
-type PortalType = {
+type ModalProps = {
   children: ReactNode;
+  onClose: () => void;
 };
 
-export const Portal = ({ children }: PortalType) => {
-  const container = usePortal();
-
-  if (!container) return null;
-  return createPortal(children, container);
+export const Modal = ({ children, onClose }: ModalProps) => {
+  return (
+    <Portal>
+      <div className={styles.overlay} onClick={onClose}>
+        <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+          {children}
+        </div>
+      </div>
+    </Portal>
+  );
 };
+
+Modal.Header = ({ children }: { children: ReactNode }) => (
+  <div className={styles.header}>{children}</div>
+);
+
+Modal.Body = ({ children }: { children: ReactNode }) => (
+  <div className={styles.body}>{children}</div>
+);
+
+Modal.Footer = ({ children }: { children: ReactNode }) => (
+  <div className={styles.footer}>{children}</div>
+);

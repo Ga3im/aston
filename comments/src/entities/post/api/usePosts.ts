@@ -5,7 +5,6 @@ const fetchPosts = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   if (!response.ok) throw new Error("Ошибка загрузки");
   const data = await response.json();
-  console.log(data)
   return data;
 };
 
@@ -23,7 +22,6 @@ export const usePosts = () => {
         setPosts(data);
       } catch (err) {
         setError("Не удалось загрузить посты");
-        console.error(err);
       } finally {
         setIsLoading(false);
       }
