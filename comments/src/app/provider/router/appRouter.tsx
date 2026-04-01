@@ -4,9 +4,9 @@ import { PostListPage } from "../../../pages/PostListPage/ui/PostListPage";
 import { PostDetailsPage } from "../../../pages/PostDetailsPage/ui/PostDetailsPage";
 import { UserTodosPage } from "../../../pages/UserTodosPage/ui/UserTodosPage";
 import { UserPostsPage } from "../../../pages/UserPostsPage/ui/UserPostsPage";
-import { UserLayout } from "../../../pages/UserPage/ui/UserPage";
 import { AlbumPhotosPage } from "../../../pages/AlbumPhotosPage/ui/AlbumPhotosPage";
 import { UserAlbumsPage } from "../../../pages/UserAlbumsPage/ui/UserAlbumsPage";
+import { UserLayout } from "../../../widgets/user/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -15,9 +15,9 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/posts" replace /> },
       { path: "posts", element: <PostListPage /> },
-      { path: "posts/:id", element: <PostDetailsPage /> },
+      { path: "posts/:postId", element: <PostDetailsPage /> },
       {
-        path: "users/:id",
+        path: "users/:userId",
         element: <UserLayout />, 
         children: [
           { path: "posts", element: <UserPostsPage /> },
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
           { path: "todos", element: <UserTodosPage /> },
         ],
       },
-      { path: "albums/:id/photos", element: <AlbumPhotosPage /> },
+      { path: "albums/:albumId/photos", element: <AlbumPhotosPage /> },
     ],
   },
 ]);

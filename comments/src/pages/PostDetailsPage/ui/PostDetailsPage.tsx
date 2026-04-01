@@ -5,10 +5,10 @@ import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
 
 export const PostDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { postId } = useParams<{ postId: string }>();
   const navigate = useNavigate();
 
-  const { post, isLoading, error } = usePostById(id);
+  const { post, isLoading, error } = usePostById(postId);
   const { theme } = useTheme();
 
   if (isLoading) return <PostListSkeleton length={1} />;

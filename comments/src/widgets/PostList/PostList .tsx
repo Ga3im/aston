@@ -2,9 +2,8 @@ import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
-import { sortByLength } from "../../shared/lib/sort/sortByLenght";
+import { sortByLength, type SortOrder } from "../../shared/lib/sort/sortByLenght";
 import { useCallback, useMemo, useState } from "react";
-import type { SortOrder } from "../../features/PostLengthFilter/lib/filterByLength";
 import { usePosts } from "../../features/PostList/model/hooks/usePosts";
 import { FilterByLength } from "../../features/FilterByLength/ui/FilterByLength";
 
