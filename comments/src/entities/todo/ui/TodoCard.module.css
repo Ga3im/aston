@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid #d4dbe5;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.cardDark {
+  background: #3b3b3b;
+  border-color: #444;
+  color: #fff;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: default;
+  accent-color: #565eef; /* Цвет галочки */
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.todoTitle {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.completedTitle {
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: line-through; /* Зачеркнутый текст */
+  color: #94a6be;
+  text-transform: capitalize;
+}
+
+.idText {
+  font-size: 11px;
+  color: #94a6be;
+}

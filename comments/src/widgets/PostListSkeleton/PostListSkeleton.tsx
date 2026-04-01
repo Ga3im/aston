@@ -1,14 +1,15 @@
 import { useTheme } from "../../shared/lib/theme/useTheme";
 import styles from "./PostListSleketon.module.css";
 
-export const PostListSkeleton = () => {
+export const PostListSkeleton = ({ length }: { length?: number }) => {
   const { theme } = useTheme();
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
+  const arrLength = length !== undefined ? length : 10;
 
   return (
-    <div className={styles.list}>
-      {Array(10)
+    <div className={length === 1 ? styles.oneList : styles.list}>
+      {Array(arrLength)
         .fill(0)
         .map((_, i) => (
           <article key={i} className={cardTheme}>

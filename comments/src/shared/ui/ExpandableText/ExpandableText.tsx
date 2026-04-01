@@ -1,14 +1,15 @@
-import { useState, type ReactNode } from "react";
+import { useState, type MouseEvent, type ReactNode } from "react";
 import styles from "./ExpandableText.module.css";
 
-type CommentListType = {
+type ExpandableTextType = {
   children: ReactNode;
 };
 
-export const ExpandableText = ({ children }: CommentListType) => {
+export const ExpandableText = ({ children }: ExpandableTextType) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpenCommetBody = () => {
+  const handleOpenCommetBody = (e: MouseEvent<HTMLParagraphElement>) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
   return (

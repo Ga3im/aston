@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-interface WithLoadingProps {
+type WithLoadingProps = {
   isLoading: boolean;
 }
 

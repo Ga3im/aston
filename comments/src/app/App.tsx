@@ -1,16 +1,14 @@
-import { MainLayout } from "../shared/layouts/MainLayout";
-import { ModalProvider } from "../entities/about/model/ModalContext";
 import { ThemeProvider } from "../shared/lib/theme/ThemeProvider";
+import { router } from "./provider/router/appRouter";
 import { AboutModal } from "../widgets/AboutModal/AboutModal";
-import { PostList } from "../widgets/PostList/PostList ";
+import { RouterProvider } from "react-router-dom";
+import { ModalProvider } from "../entities/about/model/ModalContext";
 
 function App() {
   return (
     <ThemeProvider>
       <ModalProvider>
-        <MainLayout>
-          <PostList />
-        </MainLayout>
+        <RouterProvider router={router} />
         <AboutModal />
       </ModalProvider>
     </ThemeProvider>
