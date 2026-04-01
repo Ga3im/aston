@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./PostCard.module.css";
 import type { Post } from "../model/types";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
-import { CommentList } from "../../../widgets/CommentList/ui/CommentList";
 import { Link, useNavigate } from "react-router-dom";
+import { ExpandableText } from "../../../shared/ui/ExpandableText/ExpandableText";
 
 type PostCardProps = {
   data: Post;
+  isLoading?: boolean;
 };
 
 export const PostCard: React.FC<PostCardProps> = ({ data }) => {
@@ -16,11 +17,11 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
   const cardTheme =
     theme === "dark" ? `${styles.card} ${styles.cardDark}` : styles.card;
   return (
-    <article onClick={() => navigate(`/posts/${id}`)} className={cardTheme}>
+   <article onClick={() => navigate(`/posts/${id}`)} className={cardTheme}>
       <h3 className={styles.title}>
         {title}
       </h3>
-      <CommentList>{body}</CommentList>
+      <ExpandableText>{body}</ExpandableText>
       <div onClick={(e) => e.stopPropagation()} className={styles.authorInfo}>
         <span>Автор: </span>
         <Link to={`/users/${data.userId}/posts`} className={styles.authorLink}>

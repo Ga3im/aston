@@ -1,9 +1,10 @@
-import { useCallback } from "react";
 import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
-import { PostLengthFilter } from "../../features/PostLengthFilter/ui/PostLengthFilter";
+import { sortByLength } from "../../shared/lib/sort/sortByLenght";
+import { useCallback, useMemo, useState } from "react";
+import type { SortOrder } from "../../features/PostLengthFilter/lib/filterByLength";
 import { usePosts } from "../../features/PostList/model/hooks/usePosts";
 
 const PostListBase = ({
@@ -26,8 +27,13 @@ type PostListProps = {
 };
 const PostListWithLoading = withLoading(PostListBase, PostListSkeleton);
 
-export const PostList = ({ userId }: PostListProps) => {
-  const { sortedPosts, setSortOrder, isLoading, error } = usePosts(userId);
+export const PostList = ({userId}: PostListProps) => {
+    const { posts, isLoading, error } = usePosts(userId);
+  const [sortOrder, setSortOrder] = useState<SortOrder>("none");
+
+    const sortedPosts = useMemo(() => {
+    return sortByLength(posts, sortOrder, "title");
+  }, [posts, sortOrder]);
 
   const handleSortChange = useCallback(
     (order: any) => {
@@ -35,13 +41,11 @@ export const PostList = ({ userId }: PostListProps) => {
     },
     [setSortOrder]
   );
-
   if (error) return <div>Ошибка: {error}</div>;
 
   return (
     <>
-      <PostLengthFilter onChange={handleSortChange} />
-
+      <FilterByLength  onChange={handleSortChange} />
       <PostListWithLoading isLoading={isLoading} sortedPosts={sortedPosts} />
     </>
   );

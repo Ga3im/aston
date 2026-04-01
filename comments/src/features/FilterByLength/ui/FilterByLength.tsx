@@ -1,25 +1,21 @@
-<<<<<<<< HEAD:comments/src/features/PostLengthFilter/ui/PostLengthFilter.tsx
-import type { ChangeEvent } from "react";
-import styles from "./PostLengthFilter.module.css";
-import type { SortOrder } from "../lib/filterByLength";
-========
-import { memo, useCallback, type ChangeEvent } from "react";
+import { useCallback, type ChangeEvent } from "react";
 import styles from "./FilterByLength.module.css";
 import type { SortOrder } from "../../../shared/lib/sort/sortByLenght";
->>>>>>>> homework-3:comments/src/features/FilterByLength/ui/FilterByLength.tsx
 import { useTheme } from "../../../shared/lib/theme/useTheme";
 
 type PostLengthFilterType = {
   onChange: (value: SortOrder) => void;
 };
 
-export const FilterByLength = memo(({ onChange }: PostLengthFilterType) => {
+export const FilterByLength = ({ onChange }: PostLengthFilterType) => {
   const { theme } = useTheme();
 
-  const handleSortChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value as SortOrder;
-    onChange(value);
-  }, [onChange]);
+const handleSortChange = useCallback((
+  e: ChangeEvent<HTMLSelectElement>
+) => {
+  const value = e.target.value as SortOrder;
+  onChange(value);
+}, [onChange]);
 
   const labelTheme =
     theme === "dark" ? `${styles.label} ${styles.labelDark}` : styles.label;
@@ -36,5 +32,4 @@ export const FilterByLength = memo(({ onChange }: PostLengthFilterType) => {
       </select>
     </div>
   );
-});
-
+};

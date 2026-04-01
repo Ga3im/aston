@@ -5,7 +5,7 @@ type CommentListType = {
   children: ReactNode;
 };
 
-export const CommentList = ({ children }: CommentListType) => {
+export const ExpandableText = ({ children }: CommentListType) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenCommetBody = (e: MouseEvent<HTMLParagraphElement>) => {

@@ -1,4 +1,4 @@
-import { useAboutModal } from "../../shared/lib/modal/useAboutModal";
+import { useAboutModal } from "../../entities/about/model/useAboutModal";
 import { Modal } from "../../shared/ui/Modal/Modal";
 
 
