@@ -1,32 +1,19 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetAlbumPhotosQuery } from "../../../entities/photos/api/PhotoApi";
+import { Button } from "../../../shared/ui/Button/Button";
+import { PhotoList } from "../../../widgets/PhotoList/PhotoList";
 import styles from "./AlbumPhotosPage.module.css";
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
-import { useAlbumPhotos } from "../../../features/AlbumPhotos/model/hooks/useAlbumPhotos";
 
 export const AlbumPhotosPage = () => {
   const navigate = useNavigate();
-  const { photos, isLoading } = useAlbumPhotos();
+  const { albumPhotoId } = useParams<{ albumPhotoId: string }>();
 
-  if (isLoading)
-    return (
-      <div className={styles.container}>
-        <PostListSkeleton length={6} />
-      </div>
-    );
+  const { data: photos, isLoading, error } = useGetAlbumPhotosQuery(albumPhotoId ?? "");
 
   return (
     <div className={styles.container}>
-      <button className={styles.backBtn} onClick={() => navigate(-1)}>
-        ← К альбомам
-      </button>
-      <div className={styles.grid}>
-        {photos.map((photo) => (
-          <div key={photo.id} className={styles.photoCard}>
-            <img src={photo.thumbnailUrl} alt={photo.title} />
-            <p>{photo.title}</p>
-          </div>
-        ))}
-      </div>
+      <Button onClick={() => navigate(-1)}>← Назад</Button>
+      <PhotoList photos={photos} isLoading={isLoading} error={error} />
     </div>
   );
 };

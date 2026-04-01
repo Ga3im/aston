@@ -20,7 +20,7 @@
   width: 20px;
   height: 20px;
   cursor: default;
-  accent-color: #565eef; /* Цвет галочки */
+  accent-color: #565eef; 
 }
 
 .info {
@@ -38,7 +38,7 @@
 .completedTitle {
   font-size: 16px;
   font-weight: 400;
-  text-decoration: line-through; /* Зачеркнутый текст */
+  text-decoration: line-through;
   color: #94a6be;
   text-transform: capitalize;
 }

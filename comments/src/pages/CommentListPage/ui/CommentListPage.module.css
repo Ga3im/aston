@@ -1,0 +1,24 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loader {
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+}

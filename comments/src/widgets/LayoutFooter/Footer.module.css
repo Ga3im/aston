@@ -1,7 +1,6 @@
 .footer {
   background-color: #e0e0e0;
   color: #000000;
-
   padding: 40px 20px;
   font-family: sans-serif;
 }
@@ -47,11 +46,6 @@
   text-decoration: none;
   transition: color 0.2s ease;
   transition: all 0.3s;
-}
-
-.link:hover {
-  color: #fff;
-  transform: scale(1.2);
 }
 
 .linkDark {

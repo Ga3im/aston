@@ -1,4 +1,5 @@
 import type { MouseEventHandler, ReactNode } from "react";
+import styles from "./Button.module.css";
 
 type ButtonType = {
   children: ReactNode;
@@ -8,7 +9,9 @@ type ButtonType = {
 export const Button = ({ children, onClick }: ButtonType) => {
   return (
     <>
-      <button onClick={onClick}>{children}</button>
+      <button className={styles.button} onClick={onClick}>
+        {children}
+      </button>
     </>
   );
 };

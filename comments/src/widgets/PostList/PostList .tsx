@@ -2,14 +2,20 @@ import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
 import { PostListSkeleton } from "../PostListSkeleton/PostListSkeleton";
 import { withLoading } from "../../shared/lib/hoc/withLoading";
-import { sortByLength, type SortOrder } from "../../shared/lib/sort/sortByLenght";
-import { useCallback, useMemo, useState } from "react";
 import { usePosts } from "../../features/PostList/model/hooks/usePosts";
+import type { Post } from "../../entities/post/model/types";
+import { useCallback } from "react";
+import type { SortOrder } from "../../shared/lib/sort/sortByLenght";
 import { FilterByLength } from "../../features/FilterByLength/ui/FilterByLength";
+
+type PostListProp = {
+  posts?: Post[];
+  isLoading: boolean;
+  error: any;
+};
 
 const PostListBase = ({
   sortedPosts,
-  isLoading,
 }: {
   sortedPosts: any[];
   isLoading: boolean;
@@ -17,37 +23,35 @@ const PostListBase = ({
   return (
     <section className={styles.list}>
       {sortedPosts.map((post) => (
-        <PostCard key={post.id} data={post} isLoading={isLoading} />
+        <PostCard key={post.id} data={post} />
       ))}
     </section>
   );
 };
-type PostListProps = {
-  userId?: string;
-};
+
 const PostListWithLoading = withLoading(PostListBase, PostListSkeleton);
 
-export const PostList = ({userId}: PostListProps) => {
-    const { posts, isLoading, error } = usePosts(userId);
-  const [sortOrder, setSortOrder] = useState<SortOrder>("none");
-
-    const sortedPosts = useMemo(() => {
-    return sortByLength(posts, sortOrder, "title");
-  }, [posts, sortOrder]);
+export const PostList = ({ posts = [], isLoading, error }: PostListProp) => {
+  const { sortedPosts, setSortOrder } = usePosts(posts);
 
   const handleSortChange = useCallback(
-    (order: any) => {
+    (order: SortOrder) => {
       setSortOrder(order);
     },
     [setSortOrder]
   );
-  if (error) return <div>Ошибка: {error}</div>;
+
+  if (error) {
+    const errorMessage =
+      "status" in error ? JSON.stringify(error.data) : "Ошибка";
+    return <div>Ошибка: {errorMessage}</div>;
+  }
 
 export const PostList: React.FC<PostListProps> = ({ posts, isLoading }) => {
 
   return (
     <>
-      <FilterByLength  onChange={handleSortChange} />
+      <FilterByLength onChange={handleSortChange} />
       <PostListWithLoading isLoading={isLoading} sortedPosts={sortedPosts} />
     </>
   );

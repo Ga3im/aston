@@ -3,9 +3,18 @@ import { MainLayout } from "../../../shared/layouts/MainLayout";
 import { PostListPage } from "../../../pages/PostListPage/ui/PostListPage";
 import { PostDetailsPage } from "../../../pages/PostDetailsPage/ui/PostDetailsPage";
 import { UserTodosPage } from "../../../pages/UserTodosPage/ui/UserTodosPage";
-import { UserPostsPage } from "../../../pages/UserPostsPage/ui/UserPostsPage";
 import { AlbumPhotosPage } from "../../../pages/AlbumPhotosPage/ui/AlbumPhotosPage";
 import { UserAlbumsPage } from "../../../pages/UserAlbumsPage/ui/UserAlbumsPage";
+import { UserListPage } from "../../../pages/UserListPage/ui/UserListPage";
+import { CommentListPage } from "../../../pages/CommentListPage/ui/CommentListPage";
+import { CommentDetailsPage } from "../../../pages/CommentDetailPage/ui/CommentDetailPage";
+import { AlbumListPage } from "../../../pages/AlbumListPage/ui/AlbumListPage";
+import { AlbumDetailsPage } from "../../../pages/AlbumDetailPage/ui/AlbumDetailPage";
+import { PhotoListPage } from "../../../pages/PhotoListPage/ui/PhotoListPage";
+import { PhotoDetailPage } from "../../../pages/PhotoDetailPage/ui/PhotoDetailPage";
+import { TodoDetailPage } from "../../../pages/TodoDetailPage/ui/TodoDetailPage";
+import { TodoListPage } from "../../../pages/TodoListPage/ui/TodoListPage";
+import { UserPostsPage } from "../../../pages/UserPostsPage/ui/UserPostsPage";
 import { UserLayout } from "../../../widgets/user/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
@@ -16,16 +25,26 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/posts" replace /> },
       { path: "posts", element: <PostListPage /> },
       { path: "posts/:postId", element: <PostDetailsPage /> },
+      { path: "comments", element: <CommentListPage /> },
+      { path: "comments/:commentId", element: <CommentDetailsPage /> },
+      { path: "albums", element: <AlbumListPage /> },
+      { path: "albums/:albumId", element: <AlbumDetailsPage /> },
+      { path: "photos", element: <PhotoListPage /> },
+      { path: "photos/:photoId", element: <PhotoDetailPage /> },
+      { path: "todos", element: <TodoListPage /> },
+      { path: "todos/:todoId", element: <TodoDetailPage /> },
+      { path: "users", element: <UserListPage /> },
+
       {
         path: "users/:userId",
-        element: <UserLayout />, 
+        element: <UserLayout />,
         children: [
           { path: "posts", element: <UserPostsPage /> },
-          { path: "albums", element: <UserAlbumsPage  /> },
+          { path: "albums", element: <UserAlbumsPage /> },
           { path: "todos", element: <UserTodosPage /> },
         ],
       },
-      { path: "albums/:albumId/photos", element: <AlbumPhotosPage /> },
+      { path: "albums/:userId/photos", element: <AlbumPhotosPage /> },
     ],
   },
 ]);

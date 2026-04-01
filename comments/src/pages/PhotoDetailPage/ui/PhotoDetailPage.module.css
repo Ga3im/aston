@@ -1,0 +1,49 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+.cardDark {
+  background: #2d2d2d;
+  border-color: #444;
+}
+
+.name {
+  margin: 0 0 16px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.titleDark { color: #f0f0f0; }
+
+.info {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.imageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fullImage {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

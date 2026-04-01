@@ -4,7 +4,7 @@ import styles from "./ThemeSwitcher.module.css";
 export const ThemeSwitcher = () => {
   const { theme, handleTheme } = useTheme();
   return (
-    <button onClick={handleTheme}>
+    <button className={styles.button} onClick={handleTheme}>
       {theme === "light" ? (
         <div className={styles.btnBlock}>
           <p className={styles.darkThemeBtnMobile}>🌙</p>
@@ -14,7 +14,7 @@ export const ThemeSwitcher = () => {
         <div className={styles.btnBlock}>
           <p className={styles.lightThemeBtnMobile}>☀️</p>
           <p className={styles.lightThemeBtn}>Светлая тема</p>
-        </div>
+        </div>  
       )}
     </button>
   );
