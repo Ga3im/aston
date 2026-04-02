@@ -1,8 +1,9 @@
 import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
 import styles from "./UserAlbumsPage.module.css";
 import { useGetUserAlbumsQuery } from "../../../entities/album/api/albumApi";
-import { AlbumList } from "../../../widgets/AlbumList/AlbumList";
 import { useParams } from "react-router-dom";
+import { ItemList } from "../../../shared/ui/ItemList/ItemList";
+import { AlbumCard } from "../../../entities/album/ui/AlbumCard";
 
 export const UserAlbumsPage = () => {
   const { id } = useParams();
@@ -18,7 +19,12 @@ export const UserAlbumsPage = () => {
   return (
     <>
       <h2 className={styles.title}>Альбомы пользователя</h2>
-      <AlbumList albums={albums} isLoading={isLoading} />
+      <ItemList
+        items={albums}
+        keyExtractor={(album) => album.id}
+        renderItem={(album) => <AlbumCard data={album} />}
+        className={styles.grid}
+      />
     </>
   );
 };
