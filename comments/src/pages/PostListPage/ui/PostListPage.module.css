@@ -1,3 +1,13 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.titleDark {
+  color: #f0f0f0;
+}
+
 .list {
   display: grid;
   grid-template-columns: repeat(4, 2fr);

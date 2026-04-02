@@ -1,13 +1,19 @@
-import React from "react";
 import styles from "./CommentCard.module.css";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
-import type { Comments } from "../model/types";
 import { useNavigate } from "react-router-dom";
+import type { Comment } from "../model/types";
 
-export const CommentCard: React.FC<{ data: Comments }> = ({ data }) => {
+type CommentCardProp = {
+  comment: Comment;
+};
+
+export const CommentCard = ({ comment }: CommentCardProp) => {
   const { theme } = useTheme();
-  const { id, email, name, body } = data;
+  
+  const { id, email, name, body } = comment;
+
   const navigate = useNavigate();
+
   const themeClass = theme === "dark" ? styles.dark : "";
 
   return (

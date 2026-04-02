@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./PostDetailPage.module.css";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Skeleton } from "../../../widgets/Skeleton/Skeleton";
 import { Button } from "../../../shared/ui/Button/Button";
 import { useGetPostByIdQuery } from "../../../entities/post/api/postApi";
 
@@ -12,7 +12,7 @@ export const PostDetailsPage = () => {
   const { data: post, isLoading, error } = useGetPostByIdQuery(id ?? "");
   const { theme } = useTheme();
 
-  if (isLoading) return <PostListSkeleton length={1} />;
+  if (isLoading) return <Skeleton length={1} />;
   if (error) {
     const errorMessage =
       "status" in error ? JSON.stringify(error.data) : "Ошибка";

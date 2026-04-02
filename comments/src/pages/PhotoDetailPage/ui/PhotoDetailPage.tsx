@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "../../../shared/ui/Button/Button";
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Skeleton } from "../../../widgets/Skeleton/Skeleton";
 import styles from "./PhotoDetailPage.module.css";
 import { useGetPhotoByIdQuery } from "../../../entities/photos/api/PhotoApi";
 import { PhotoCard } from "../../../entities/photos/ui/PhotoCard";
@@ -14,7 +14,7 @@ export const PhotoDetailPage = () => {
   if (isLoading)
     return (
       <div className={styles.container}>
-        <PostListSkeleton length={1} />
+        <Skeleton length={1} />
       </div>
     );
   if (error)

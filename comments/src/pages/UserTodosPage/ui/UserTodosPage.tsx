@@ -1,16 +1,17 @@
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Skeleton } from "../../../widgets/Skeleton/Skeleton";
 import { TodoCard } from "../../../entities/todo/ui/TodoCard";
-import { useGetUserTodosQuery } from "../../../entities/todo/api/todoApi";
 import { useParams } from "react-router-dom";
+import { ItemList } from "../../../shared/ui/ItemList/ItemList";
+import { useGetUserTodosQuery } from "../../../entities/todo/api/todoApi";
 
 export const UserTodosPage = () => {
- const { userId } = useParams();
+  const { userId } = useParams();
   const { data: todos = [], isLoading } = useGetUserTodosQuery(userId ?? "");
-  
+
   if (isLoading)
     return (
       <div>
-        <PostListSkeleton length={8} />
+        <Skeleton length={8} />
       </div>
     );
 

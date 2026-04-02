@@ -8,7 +8,7 @@ export const albumSlice = createSlice({
   name: "albums",
   initialState: albumAdapter.getInitialState(),
   reducers: {
-    removePost: albumAdapter.removeOne,
+    removeAlbum: albumAdapter.removeOne,
   },
   extraReducers: (builder) => {
     builder.addMatcher(

@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 
 import styles from "./CommentDetailPage.module.css";
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Skeleton } from "../../../widgets/Skeleton/Skeleton";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { Button } from "../../../shared/ui/Button/Button";
 import { useGetCommentByIdQuery } from "../../../entities/comment/api/commentApi";
@@ -13,7 +13,7 @@ export const CommentDetailsPage = () => {
 
   const { data: comment, isLoading, error } = useGetCommentByIdQuery(id ?? "");
 
-  if (isLoading) return <PostListSkeleton length={1} />;
+  if (isLoading) return <Skeleton length={1} />;
 
   if (error) {
     const errorMessage =

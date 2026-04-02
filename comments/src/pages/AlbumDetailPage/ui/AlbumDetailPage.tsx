@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./AlbumDetailPage.module.css";
 import { useGetAlbumByIdQuery } from "../../../entities/album/api/albumApi";
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Skeleton } from "../../../widgets/Skeleton/Skeleton";
 import { Button } from "../../../shared/ui/Button/Button";
 
 export const AlbumDetailsPage = () => {
@@ -10,8 +10,9 @@ export const AlbumDetailsPage = () => {
 
   const { data: album, isLoading, error } = useGetAlbumByIdQuery(id ?? "");
 
-  if (isLoading) return <PostListSkeleton length={9} />;
-  if (error) return <div className={styles.error}>Ошибка загрузки фотографий</div>;
+  if (isLoading) return <Skeleton length={9} />;
+  if (error)
+    return <div className={styles.error}>Ошибка загрузки фотографий</div>;
 
   return (
     <div className={styles.container}>

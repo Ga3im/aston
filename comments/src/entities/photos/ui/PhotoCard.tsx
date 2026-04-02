@@ -4,12 +4,14 @@ import styles from "./PhotoCard.module.css";
 import type { Photo } from "../model/types";
 
 type PhotoCardProps = {
-  data: Photo;
+  photo: Photo;
 };
 
-export const PhotoCard: React.FC<PhotoCardProps> = ({ data }) => {
-  const { title, thumbnailUrl, id, albumId } = data;
+export const PhotoCard = ({ photo }:PhotoCardProps) => {
+  const { title, thumbnailUrl, id, albumId } = photo;
+
   const navigate = useNavigate();
+  
   const { theme } = useTheme();
 
   const isDark = theme === "dark";

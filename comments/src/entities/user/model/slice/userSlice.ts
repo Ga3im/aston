@@ -8,7 +8,7 @@ export const usersSlice = createSlice({
   name: "post",
   initialState: usersAdapter.getInitialState(),
   reducers: {
-    removePost: usersAdapter.removeOne,
+    removeUsers: usersAdapter.removeOne,
   },
   extraReducers: (builder) => {
     builder.addMatcher(

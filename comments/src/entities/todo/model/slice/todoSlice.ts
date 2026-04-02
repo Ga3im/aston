@@ -8,11 +8,11 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState: todoAdapter.getInitialState(),
   reducers: {
-    removePost: todoAdapter.removeOne,
+    removeTodo: todoAdapter.removeOne,
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      todoApi.endpoints.getTodos.matchFulfilled,
+      todoApi.endpoints.getTodo.matchFulfilled,
       (state, action) => {
         todoAdapter.setAll(state, action.payload);
       }
@@ -21,7 +21,7 @@ export const todoSlice = createSlice({
 });
 
 export const todoSelectors = todoAdapter.getSelectors(
-  (state: any) => state.post
+  (state: any) => state.todo
 );
 
 export default todoSlice.reducer;

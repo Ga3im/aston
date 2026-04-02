@@ -9,6 +9,8 @@
   text-decoration: none;
   color: #000;
   transition: all 0.2s ease;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .cardDark {
@@ -30,6 +32,10 @@
   font-weight: 600;
   text-transform: capitalize;
   margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .linkText {

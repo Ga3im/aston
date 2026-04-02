@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetTodoByIdQuery } from "../../../entities/todo/api/todoApi";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { Button } from "../../../shared/ui/Button/Button";
-import { PostListSkeleton } from "../../../widgets/PostListSkeleton/PostListSkeleton";
+import { Skeleton } from "../../../widgets/Skeleton/Skeleton";
 import styles from "./TodoDetailPage.module.css";
 
 export const TodoDetailPage = () => {
@@ -12,12 +12,22 @@ export const TodoDetailPage = () => {
 
   const { data: todo, isLoading, error } = useGetTodoByIdQuery(id ?? "");
 
-  if (isLoading) return <div className={styles.container}><PostListSkeleton length={1} /></div>;
-  if (error) return <div className={styles.container}>Ошибка: {JSON.stringify(error)}</div>;
+  if (isLoading)
+    return (
+      <div className={styles.container}>
+        <Skeleton length={1} />
+      </div>
+    );
+  if (error)
+    return (
+      <div className={styles.container}>Ошибка: {JSON.stringify(error)}</div>
+    );
 
   const isDark = theme === "dark";
   const cardTheme = `${styles.card} ${isDark ? styles.cardDark : ""}`;
-  const statusTheme = todo?.completed ? styles.statusDone : styles.statusPending;
+  const statusTheme = todo?.completed
+    ? styles.statusDone
+    : styles.statusPending;
 
   return (
     <div className={styles.container}>
@@ -30,11 +40,11 @@ export const TodoDetailPage = () => {
           </span>
           <span className={styles.id}>Задача №{todo?.id}</span>
         </div>
-        
+
         <h1 className={`${styles.name} ${isDark ? styles.titleDark : ""}`}>
           {todo?.title}
         </h1>
-        
+
         <p className={styles.info}>ID пользователя: {todo?.userId}</p>
       </article>
     </div>

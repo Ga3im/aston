@@ -8,7 +8,7 @@ export const commentsSlice = createSlice({
   name: "comments",
   initialState: commentsAdapter.getInitialState(),
   reducers: {
-    removePost: commentsAdapter.removeOne,
+    removeComments: commentsAdapter.removeOne,
   },
   extraReducers: (builder) => {
     builder.addMatcher(

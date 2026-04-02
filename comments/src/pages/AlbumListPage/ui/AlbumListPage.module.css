@@ -15,6 +15,9 @@
   font-size: 24px;
   color: var(--text-primary);
 }
+.titleDark {
+  color: #f0f0f0;
+}
 
 @media (max-width: 600px) {
   .grid {

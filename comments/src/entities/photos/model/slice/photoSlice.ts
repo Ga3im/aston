@@ -8,7 +8,7 @@ export const photoSlice = createSlice({
   name: "photo",
   initialState: photoAdapter.getInitialState(),
   reducers: {
-    removePost: photoAdapter.removeOne,
+    removePhoto: photoAdapter.removeOne,
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -21,7 +21,7 @@ export const photoSlice = createSlice({
 });
 
 export const postsSelectors = photoAdapter.getSelectors(
-  (state: any) => state.post
+  (state: any) => state.photo
 );
 
 export default photoSlice.reducer;

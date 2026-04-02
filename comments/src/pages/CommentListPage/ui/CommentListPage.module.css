@@ -10,6 +10,9 @@
   border-bottom: 2px solid #eee;
   padding-bottom: 12px;
 }
+.titleDark {
+  color: #f0f0f0;
+}
 
 .list {
   display: flex;

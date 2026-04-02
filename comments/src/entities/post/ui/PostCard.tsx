@@ -1,16 +1,15 @@
-import React from "react";
 import styles from "./PostCard.module.css";
 import type { Post } from "../model/types";
-import { CommentList } from "../../../widgets/CommentList/ui/CommentList";
 import { useTheme } from "../../../shared/lib/theme/useTheme";
 import { Link, useNavigate } from "react-router-dom";
+import { ExpandableText } from "../../../shared/ui/ExpandableText/ExpandableText";
 
 type PostCardProps = {
-  data: Post;
+  post: Post;
 };
 
-export const PostCard: React.FC<PostCardProps> = ({ data }) => {
-  const { title, body, id, userId } = data;
+export const PostCard = ({ post }: PostCardProps) => {
+  const { title, body, id, userId } = post;
   const { theme } = useTheme();
   const navigate = useNavigate();
 
@@ -20,7 +19,7 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
   return (
     <article onClick={() => navigate(`/posts/${id}`)} className={cardTheme}>
       <h3 className={styles.title}>{title}</h3>
-      <CommentList>{body}</CommentList>
+      <ExpandableText>{body}</ExpandableText>
       <div onClick={(e) => e.stopPropagation()} className={styles.authorInfo}>
         <span>Автор: </span>
         <Link to={`/users/${userId}`} className={styles.authorLink}>
